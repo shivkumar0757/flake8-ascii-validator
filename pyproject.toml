@@ -1,0 +1,111 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flake8-ascii-validator"
+version = "1.0.0"
+description = "A Flake8 plugin to validate ASCII characters in Python source code"
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+authors = [
+    {name = "Shiv Kumar", email = "shivkumar0757@gmail.com"},
+]
+maintainers = [
+    {name = "Shiv Kumar", email = "shivkumar0757@gmail.com"},
+]
+keywords = [
+    "flake8",
+    "plugin",
+    "ascii",
+    "validation",
+    "code-quality",
+    "linting"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Framework :: Flake8",
+    "Intended Audience :: Developers",
+
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "flake8>=3.0.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=6.0",
+    "pytest-cov",
+    "flake8",
+]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov",
+    "flake8",
+    "black",
+    "isort",
+    "build",
+    "twine",
+]
+
+[project.urls]
+Homepage = "https://github.com/shivkumar0757/flake8-ascii-validator"
+Repository = "https://github.com/shivkumar0757/flake8-ascii-validator"
+"Bug Tracker" = "https://github.com/shivkumar0757/flake8-ascii-validator/issues"
+Documentation = "https://github.com/shivkumar0757/flake8-ascii-validator#readme"
+
+[project.entry-points."flake8.extension"]
+ASC = "flake8_ascii_validator:ascii_checker_factory"
+
+[tool.setuptools]
+py-modules = ["flake8_ascii_validator"]
+
+[tool.flake8]
+max-line-length = 79
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = [
+    "--verbose",
+    "--tb=short",
+    "--cov=flake8_ascii_validator",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+
+[tool.coverage.run]
+source = ["flake8_ascii_validator"]
+omit = [
+    "tests/*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
