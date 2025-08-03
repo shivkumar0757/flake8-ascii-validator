@@ -16,7 +16,7 @@ class AsciiChecker:
     """Flake8 plugin to check for non-ASCII characters in source code."""
 
     name = "flake8-ascii-validator"
-    version = "1.0.1"
+    version = "1.0.2"
 
     # Error codes
     ASC001 = "ASC001 Non-ASCII character found in source code"
